@@ -17,8 +17,6 @@ body {
 
 .menu {
     position: fixed;
-    /* top: 0;
-    left: 0; */
     z-index: 1000;
     width: 150px;
     background: #1b1a1a;
