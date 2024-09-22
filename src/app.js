@@ -43,12 +43,10 @@ document.body.addEventListener('contextmenu', (event) => {
     const objKeys = Object.keys(modules)
     if (objKeys.length !== 0) {
         menu.open()
-        menu.add(modules['randomFigure'])
-        menu.add(modules['shapeModule'])
-        menu.add(modules['clicksModule'])
-        menu.add(modules['backgroundModule'])
+        objKeys.forEach((el) => {
+            menu.add(modules[el])
+        })
     }
-
 })
 
 menu.el.addEventListener('click', (event) => {
@@ -57,3 +55,5 @@ menu.el.addEventListener('click', (event) => {
     modules[type].trigger()
     menu.close()
 })
+
+
