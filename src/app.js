@@ -24,17 +24,15 @@ function removeModuleResult() {
 
 document.body.addEventListener('contextmenu', (event) => {
     event.preventDefault()
-
     removeModuleResult()
-
     const items = document.querySelectorAll('.menu-item')
+    
     if (items.length !== 0) {
         items.forEach((el) => {
             el.remove()
         })
     } 
-
-
+    
     Object.assign(menu.el.style, {
         top: `${event.clientY}px`,
         left: `${event.clientX}px`
