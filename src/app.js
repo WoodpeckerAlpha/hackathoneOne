@@ -5,10 +5,12 @@ import { BackgroundModule } from './modules/background.module'
 import { ClicksModule } from './modules/clicks.module'
 import { ShapeModule } from './modules/shape.module'
 import { RandomFigure } from './modules/random.figure.module'
+import { RandomAudio } from './modules/random.audio.module'
 
 const menu = new ContextMenu('.menu')
 
 const modules = {
+    randomAudio: new RandomAudio('randomAudio', 'Рандомный звук'),
     randomFigure: new RandomFigure('randomFigure', 'randomFigure'),
     shapeModule: new ShapeModule('shapeModule', 'shape'),
     clicksModule: new ClicksModule('clicksModule', 'clicks'),
@@ -26,13 +28,13 @@ document.body.addEventListener('contextmenu', (event) => {
     event.preventDefault()
     removeModuleResult()
     const items = document.querySelectorAll('.menu-item')
-    
+
     if (items.length !== 0) {
         items.forEach((el) => {
             el.remove()
         })
     } 
-    
+
     Object.assign(menu.el.style, {
         top: `${event.clientY}px`,
         left: `${event.clientX}px`
@@ -53,5 +55,6 @@ menu.el.addEventListener('click', (event) => {
     modules[type].trigger()
     menu.close()
 })
+
 
 
