@@ -15,8 +15,18 @@ const modules = {
     backgroundModule: new BackgroundModule('backgroundModule', 'background')
 }
 
+function removeModuleResult() {
+    const module = document.querySelector('.module')
+    if (module) {
+        module.remove()
+    }
+}
+
 document.body.addEventListener('contextmenu', (event) => {
     event.preventDefault()
+
+    removeModuleResult()
+
     const items = document.querySelectorAll('.menu-item')
     if (items.length !== 0) {
         items.forEach((el) => {
@@ -42,10 +52,7 @@ document.body.addEventListener('contextmenu', (event) => {
 })
 
 menu.el.addEventListener('click', (event) => {
-    const module = document.querySelector('.module')
-    if (module) {
-        module.remove()
-    }
+    removeModuleResult()
     const {type} = event.target.dataset
     modules[type].trigger()
     menu.close()
